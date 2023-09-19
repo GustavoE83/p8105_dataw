@@ -7,6 +7,8 @@ output: github_document
 
 ```{r setup, include=FALSE}
 library(tidyverse)
+library(readxl)
+library(haven)
 ```
 
 # Data
@@ -45,5 +47,21 @@ litters_df =
       cols(
       `GD0 weight` = col_character()
   ))
+```
+
+# Other file types
+
+Excel:
+
+```{r}
+mlb_df = 
+  read_excel("data/mlb11.xlsx")
+```
+
+SAS:
+
+```{r}
+pulse =
+  read_sas("data/public_pulse_data.sas7bdat")
 ```
 

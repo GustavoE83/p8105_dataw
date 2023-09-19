@@ -1,0 +1,49 @@
+---
+title: "R Markdown File lol"
+author: "Gustavo Garcia-Franceschini"
+date: "`r Sys.Date()`"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+# Data
+
+```{r}
+pups_df = janitor::clean_names(read_csv("data/FAS_pups.csv"))
+```
+
+# Looking at data 
+
+```{r}
+head(pups_df)
+
+tail(pups_df)
+```
+
+Summary
+
+```{r}
+str(pups_df)
+```
+
+```{r}
+skimr::skim(pups_df)
+```
+
+Fun fact: `read_csv` has an `na` argument. If you write `na = c(77, 99)`, those cells will become NA. Useful for survey stuff.
+
+# Fixing col types
+
+```{r}
+litters_df =
+  read_csv(
+    "data/FAS_litters.csv",
+    col_types =
+      cols(
+      `GD0 weight` = col_character()
+  ))
+```
+
